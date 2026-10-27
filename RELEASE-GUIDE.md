@@ -1,0 +1,48 @@
+# Owner's release guide — Private Video Studio
+
+The repository is ready for distribution, **but GitHub cannot generate your signed Windows artifacts by itself** because the actual video editor source and private signing key remain on your Windows machine.
+
+## One-time preparation
+
+1. Keep the complete `Private-Video-Studio-MASTER` folder on your computer, including `08-Owner-Private`.
+2. Keep an **offline backup** of the master folder and especially the owner signing key and password.
+3. Open `UPDATE-CHANNEL.txt` in the master folder. It must contain exactly:
+   ```text
+   shahidalikhanswab-sudo/private-video-studio-releases
+   ```
+4. Use the master package's `BUILD-WINDOWS-INSTALLER.cmd` to produce a signed Windows build. Avoid the old unconfigured editor build.
+5. Do not upload files from `08-Owner-Private`. The master package prepares public release assets in `09-Release-To-Upload`.
+
+## First release
+
+1. Open [GitHub Releases](../../releases), choose **Draft a new release**.
+2. Create tag `v0.5.0` targeting `main` (only if that is the **actual** signed app version).
+3. Set a title such as `Private Video Studio v0.5.0`.
+4. Drag in **all four** actual files from `09-Release-To-Upload`:
+   - the version-matched `*-setup.exe` Windows installer;
+   - the version-matched `*.nsis.zip` Tauri updater package;
+   - the matching `*.nsis.zip.sig` file;
+   - the generated `latest.json`.
+5. Mark it as the latest stable release, **not pre-release**, and publish only after checking the files match the tag and signing identity.
+6. Confirm the public manifest URL resolves and references a downloadable signed archive.
+
+**Important:** v0.5.0 cannot update itself to v0.5.0. To test the updater, publish a valid signed **v0.5.1 or later** with the same signing identity, then use the installed v0.5.0 application's **Check for Updates**.
+
+## Every subsequent release
+
+1. Commit and test the code changes in the owner's private source workspace (outside this public release repository).
+2. Increase the application version consistently in package and Tauri configuration.
+3. Build and sign with the **same** owner key; verify normal MP4 exports, titles, AI voice, and portable backups.
+4. Run the release-preparation process and check the contents of `09-Release-To-Upload`.
+5. On GitHub, create the matching `vX.Y.Z` release and upload the four generated artifacts.
+6. Once published, test the in-app update from the preceding installed version.
+
+## Troubleshooting
+
+- **No updates found:** Check that the published version is higher than the installed version and the release is marked latest.
+- **Manifest not found (404):** `latest.json` must be an asset on the latest stable release, not just a file in the repository.
+- **Updater signature rejected:** Stop. Confirm key continuity, signature, and matching package. Never bypass validation.
+- **No downloadable archive:** Check the exact `*.nsis.zip` file URL referenced by `latest.json`.
+- **New PC:** Install via the public setup EXE. Back up and restore editing projects separately.
+
+Do not create empty releases or placeholder manifests merely to make the update screen appear active.

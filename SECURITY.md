@@ -12,11 +12,11 @@ This repository is **public** so installed applications can download updates wit
 
 ## Allowed public artifacts
 
-A release may include `<app>-<version>-setup.exe`, a signed `*.nsis.zip` file, its `*.nsis.zip.sig`, and `latest.json`. Filenames must exactly match the output of the current signed build.
+A release may include `<app>-<version>-setup.exe`, the matching Tauri v2 `*-setup.exe.sig`, and `latest.json`. Filenames must exactly match the output of the current signed build.
 
 ## Release safety checks
 
-Before publishing verify: version increased, setup EXE opens, signed updater archive exists, signature matches archive, `latest.json` contains the matching version and HTTPS URL, and user projects remain preserved through installation. GitHub Release assets are **not** a safe place for user data.
+Before publishing verify: version increased, setup EXE opens, signed Windows setup executable and matching `.exe.sig` exist, signature matches installer, `latest.json` contains the matching version and HTTPS URL, and user projects remain preserved through installation. GitHub Release assets are **not** a safe place for user data.
 
 ## Security incidents
 

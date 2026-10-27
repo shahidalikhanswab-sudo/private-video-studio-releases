@@ -14,7 +14,7 @@ Do not assume a version exists until it appears under [GitHub Releases](../../re
 
 - Official release page: [Releases](../../releases)
 - Update manifest URL (active **only after a valid release is published**): `https://github.com/shahidalikhanswab-sudo/private-video-studio-releases/releases/latest/download/latest.json`
-- Each release must have a versioned Windows setup executable and Tauri-signed updater archive.
+- Each release must have a Windows setup executable and its Tauri v2 detached updater signature (`.exe.sig`).
 - For the first test, install a signed baseline version, then publish a **higher** version to verify in-app updating.
 
 ## What is allowed here

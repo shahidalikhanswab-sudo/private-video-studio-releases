@@ -20,8 +20,7 @@ Do not assume a version exists until it appears under [GitHub Releases](../../re
 ## What is allowed here
 
 - Windows installer: `*-setup.exe`
-- Tauri v2 Windows updater archive: `*.nsis.zip`
-- Detached archive signature: `*.nsis.zip.sig`
+- Tauri v2 detached Windows setup signature: `*-setup.exe.sig`
 - `latest.json` update manifest
 - Release notes and non-sensitive documentation
 

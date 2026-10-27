@@ -1,0 +1,19 @@
+# Defense in depth: do not commit owner secrets, source media or builds.
+*.key
+*.pem
+*.pfx
+*.p12
+signing-password.txt
+.env
+.env.*
+08-Owner-Private/
+03-My-Projects/
+04-Exported-Videos/
+05-Project-Backups/
+*.mp4
+*.wav
+*.mov
+*.mkv
+*.nsis.zip
+*.nsis.zip.sig
+*-setup.exe
